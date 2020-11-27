@@ -1,7 +1,10 @@
 import MenuItem from "../MenuItem/MenuItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faReact } from "@fortawesome/free-brands-svg-icons";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./Navbar.scss";
+import { useState, useEffect } from "react";
+import Button from "../Button/Button";
 
 function Navbar() {
     const menuItems = [
@@ -32,13 +35,26 @@ function Navbar() {
         },
     ];
 
+    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+    const offCanvasDrawerHandler = () => {
+        setIsDrawerOpen(!isDrawerOpen);
+    };
+
+    const btnIcon = isDrawerOpen ? faTimes : faBars;
+    const menuItemsMobileCName = isDrawerOpen
+        ? "Navbar__listItems--active"
+        : "";
+
     return (
         <nav className="Navbar">
-            <h1 className="Navbar__logo">React</h1>
-            <div className="Navbar__icon">
-                <FontAwesomeIcon icon={faReact} />
+            <h1 className="Navbar__logo">
+                React <FontAwesomeIcon icon={faReact} />
+            </h1>
+            <div className="Navbar__icon" onClick={offCanvasDrawerHandler}>
+                <FontAwesomeIcon icon={btnIcon} />
             </div>
-            <ul>
+            <ul className={`Navbar__listItems ${menuItemsMobileCName}`}>
                 {menuItems.map((item, index) => (
                     <MenuItem
                         key={index}
@@ -48,6 +64,14 @@ function Navbar() {
                     />
                 ))}
             </ul>
+            <Button
+                type="submit"
+                cName="btn--desktopOnly"
+                btnStyle="btn--primary"
+                btnSize="btn--medium"
+            >
+                Sign up
+            </Button>
         </nav>
     );
 }

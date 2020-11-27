@@ -1,4 +1,3 @@
-import "./App.css";
 import "normalize.css";
 import Navbar from "./components/Navbar/Navbar/Navbar";
 

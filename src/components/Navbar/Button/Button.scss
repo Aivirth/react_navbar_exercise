@@ -1,0 +1,48 @@
+:root {
+    --primary: #3acbf7;
+}
+
+$btn-padding-medium: 8px 20px;
+$btn-padding-large: 12px 26px;
+
+.btn {
+    paddding: $btn-padding-medium;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.2s ease-out;
+
+    &:hover {
+        background: #fff;
+        color: #6568f4;
+        transition: 250ms;
+    }
+
+    &--primary {
+        background-color: var(--primary);
+    }
+
+    &--outline {
+        background-color: transparent;
+        color: #fff;
+        border: 1px solid var(--primary);
+    }
+
+    &--medium {
+        font-size: 18px;
+        color: #fff;
+    }
+
+    &--large {
+        font-size: 18px;
+        padding: $btn-padding-large;
+        color: #fff;
+    }
+
+    &--desktopOnly {
+        @media screen and (max-width: 960px) {
+            display: none;
+            visibility: hidden;
+        }
+    }
+}
